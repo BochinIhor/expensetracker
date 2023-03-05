@@ -1,0 +1,28 @@
+<div class="header">
+  <a routerLink="/add_expense">Add expense</a>
+  <mat-form-field>
+  <input matInput type="text" placeholder="Filter items..." [(ngModel)]="filters.keyword" name="keyword" (input)="getExpenses()">
+  </mat-form-field>
+
+  <select name="sortBy" [(ngModel)]="filters.sortBy" (change)="getExpenses()">
+    <option>Name</option>
+    <option>Amount</option>
+  </select>
+
+</div>
+<div *ngFor="let expense of expenses" class="card">
+  <div class="headBlock">
+  <p class="expenseName">{{expense.expense}}</p>
+  <p class="expenseAmount">{{expense.amount | currency: 'UAH'}}</p>
+  </div>
+  <div class="expenseDescription">
+  <p>{{expense.description}}</p>
+  </div>
+  <div class="btnBlock">
+  <button (click)="editExpense(expense.id)" class="editBtn">Edit expense</button>
+  <button (click)="deleteExpense(expense.id)" class="deleteBtn">Delete expense</button>
+  </div>
+</div>
+
+<footer></footer>
+

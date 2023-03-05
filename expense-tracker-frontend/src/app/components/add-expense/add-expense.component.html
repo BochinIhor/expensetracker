@@ -1,0 +1,18 @@
+<form (ngSubmit)="saveExpense()">
+
+  <mat-form-field>
+  <input matInput type="text" name="expense" [(ngModel)]="expense.expense" placeholder="Enter name"/>
+  </mat-form-field>
+  <mat-form-field>
+  <input matInput type="text" name="amount" [(ngModel)]="expense.amount" placeholder="Enter amount"/>
+  </mat-form-field>
+  <mat-form-field>
+  <input matInput type="text" name="description" [(ngModel)]="expense.description" placeholder="Enter description"/>
+  </mat-form-field>
+
+  <a routerLink="/expenses">Back</a>
+
+  <button type="submit" class="addBtn">Add expense</button>
+  <button *ngIf="expense.id" (click)="deleteExpense(expense.id)" class="deleteBtn">Delete expense</button>
+
+</form>
